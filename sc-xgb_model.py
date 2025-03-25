@@ -71,18 +71,6 @@ def custom_loss_multivariate(y_pred, dtrain):
 
     # The calculation of the loss function is based on the entire training set (dtrain).
 
-    # Define conversion coefficient
-    Coef = 24 * 3600 / 1000000  # Unit conversion factor for converting flow to storage capacity
-    alpha1 = 10 ** -10  # Coefficient of outflow from reservoir 1
-    alpha2 = 10 ** -10  # Coefficient of outflow from reservoir 2
-    alpha3 = 10 ** -10  # Coefficient of outflow from reservoir 3
-    alpha4 = 10 ** -9   # Coefficient of outflow from lake 4
-    alpha5 = 10 ** -10  # Coefficient of residual outflow of reservoir 1
-    alpha6 = 10 ** -10  # Coefficient of residual outflow of reservoir 2
-    alpha7 = 10 ** -10  # Coefficient of residual outflow of reservoir 3
-    alpha8 = 10 ** -9   # Coefficient of residual outflow of lake 4
-    beta = 10 ** 15
-
     # Inverse normalization of y_pred to its original value
     def inverse_transform(y_pred_column, col_name):
         return y_pred_column * (max_values[col_name] - min_values[col_name]) + min_values[col_name]
